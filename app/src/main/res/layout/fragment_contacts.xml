@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
-    tools:context=".fragments.ContactsFragment">
-
-
+    tools:context=".fragments.ContactsFragment"
+    android:padding="15dp">
 
     <TextView
+        android:id="@+id/contacts_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="CONTACTS"
-        android:textSize="26dp"/>
+        android:text="@string/contacts"
+        android:textSize="18dp"
+        android:textColor="@color/black"/>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
