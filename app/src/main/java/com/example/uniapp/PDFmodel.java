@@ -9,6 +9,9 @@ public class PDFmodel {
         this.url = url;
     }
 
+    public PDFmodel() {
+    }
+
     public String getTitle() {
         return title;
     }
