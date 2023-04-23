@@ -1,6 +1,11 @@
 package com.example.uniapp.fragments;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,7 +25,6 @@ import android.widget.TextView;
 import com.example.uniapp.MainActivity;
 import com.example.uniapp.PDFmodel;
 import com.example.uniapp.R;
-import com.example.uniapp.RecyclerViewAdapter;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -84,7 +88,6 @@ public class ListFragment extends Fragment {
         recyclerView.setAdapter(new PdfAdapter());
         retrievePDFs();
         return view;
-
     }
 
     private void retrievePDFs() {
@@ -96,14 +99,19 @@ public class ListFragment extends Fragment {
                     String url = uri.toString();
                     pdfList.add(new PDFmodel(title, url));
                     recyclerView.getAdapter().notifyDataSetChanged();
+
+                    for (PDFmodel pdf : pdfList) {
+                        Log.d("PDF", "Title: " + pdf.getTitle() + ", URL: " + pdf.getUrl());
+                    }
+
                 }).addOnFailureListener(e -> {
                     // Handle download failure
+                    Log.e(TAG,"Error downloading files");
                 });
             }
-        }).addOnFailureListener(e -> {
-            // Handle list failure
-        });
+        }).addOnFailureListener(e -> { });
     }
+
 
     private class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.PdfViewHolder> {
 
@@ -119,7 +127,15 @@ public class ListFragment extends Fragment {
             PDFmodel pdf = pdfList.get(position);
             holder.pdfTitle.setText(pdf.getTitle());
             holder.itemView.setOnClickListener(v -> {
-                // Handle PDF item click
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.parse(pdf.getUrl()), "application/pdf");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    // Handle exception
+                }
             });
         }
 
