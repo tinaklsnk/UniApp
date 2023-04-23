@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.uniapp.MainActivity;
 import com.example.uniapp.PDFmodel;
@@ -27,39 +28,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListFragment extends Fragment {
 
-    /*//////////////////////////////////////////////////////////////////
-    private RecyclerView mRecyclerView;
-    private FirebaseStorage mStorage;
-    Context context;
-    //////////////////////////////////////////////////////////////////*/
-    DatabaseReference databaseReference;
-    ValueEventListener eventListener;
-    RecyclerView recyclerView;
-    List<PDFmodel> dataList;
-    RecyclerViewAdapter adapter;
-    SearchView searchView;
+    private RecyclerView recyclerView;
+    private List<PDFmodel> pdfList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        /*View view = inflater.inflate(R.layout.fragment_list, container, false);
         recyclerView = view.findViewById(R.id.my_recycler_view);
 
         Context context = getContext();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
-
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();*/
 
         dataList = new ArrayList<>();
 
@@ -89,6 +76,65 @@ public class ListFragment extends Fragment {
             }
         });
 
+        return view;*/
+
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        recyclerView = view.findViewById(R.id.my_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new PdfAdapter());
+        retrievePDFs();
         return view;
+
+    }
+
+    private void retrievePDFs() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        storage.getReference().child("pdfs").listAll().addOnSuccessListener(listResult -> {
+            for (StorageReference item : listResult.getItems()) {
+                String title = item.getName();
+                item.getDownloadUrl().addOnSuccessListener(uri -> {
+                    String url = uri.toString();
+                    pdfList.add(new PDFmodel(title, url));
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                }).addOnFailureListener(e -> {
+                    // Handle download failure
+                });
+            }
+        }).addOnFailureListener(e -> {
+            // Handle list failure
+        });
+    }
+
+    private class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.PdfViewHolder> {
+
+        @NonNull
+        @Override
+        public PdfViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
+            return new PdfViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull PdfViewHolder holder, int position) {
+            PDFmodel pdf = pdfList.get(position);
+            holder.pdfTitle.setText(pdf.getTitle());
+            holder.itemView.setOnClickListener(v -> {
+                // Handle PDF item click
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return pdfList.size();
+        }
+
+        private class PdfViewHolder extends RecyclerView.ViewHolder {
+            TextView pdfTitle;
+
+            PdfViewHolder(View itemView) {
+                super(itemView);
+                pdfTitle = itemView.findViewById(R.id.recitem_title);
+            }
+        }
     }
 }
