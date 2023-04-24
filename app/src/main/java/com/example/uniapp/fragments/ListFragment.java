@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.uniapp.MainActivity;
 import com.example.uniapp.PDFmodel;
+import com.example.uniapp.PdfAdapter;
 import com.example.uniapp.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -85,7 +86,10 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         recyclerView = view.findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new PdfAdapter());
+
+        PdfAdapter adapter = new PdfAdapter(pdfList, getContext());
+        recyclerView.setAdapter(adapter);
+
         retrievePDFs();
         return view;
     }
@@ -113,44 +117,5 @@ public class ListFragment extends Fragment {
     }
 
 
-    private class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.PdfViewHolder> {
 
-        @NonNull
-        @Override
-        public PdfViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
-            return new PdfViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull PdfViewHolder holder, int position) {
-            PDFmodel pdf = pdfList.get(position);
-            holder.pdfTitle.setText(pdf.getTitle());
-            holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.parse(pdf.getUrl()), "application/pdf");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                try {
-                    startActivity(intent);
-                } catch (ActivityNotFoundException e) {
-                    // Handle exception
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return pdfList.size();
-        }
-
-        private class PdfViewHolder extends RecyclerView.ViewHolder {
-            TextView pdfTitle;
-
-            PdfViewHolder(View itemView) {
-                super(itemView);
-                pdfTitle = itemView.findViewById(R.id.recitem_title);
-            }
-        }
-    }
 }
