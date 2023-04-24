@@ -1,4 +1,4 @@
-package com.example.uniapp;
+package com.example.uniapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.uniapp.R;
+import com.example.uniapp.activities.DisciplinesActivity;
+import com.example.uniapp.models.Specialty;
 
 import java.util.List;
 

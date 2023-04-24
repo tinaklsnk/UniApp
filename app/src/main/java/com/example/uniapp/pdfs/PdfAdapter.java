@@ -1,4 +1,4 @@
-package com.example.uniapp;
+package com.example.uniapp.pdfs;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.uniapp.R;
 
 import java.util.List;
 

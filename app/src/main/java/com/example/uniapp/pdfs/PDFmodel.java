@@ -1,4 +1,4 @@
-package com.example.uniapp;
+package com.example.uniapp.pdfs;
 
 public class PDFmodel {
     String title;

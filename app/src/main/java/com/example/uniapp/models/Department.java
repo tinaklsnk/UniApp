@@ -1,4 +1,4 @@
-package com.example.uniapp;
+package com.example.uniapp.models;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package com.example.uniapp;
+package com.example.uniapp.models;
+
+import com.example.uniapp.models.Discipline;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.uniapp;
+package com.example.uniapp.models;
 
 public class Discipline {
     private String name;
