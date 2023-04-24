@@ -6,9 +6,9 @@ public class Faculty {
     private String name;
     private List<Department> departments;
 
-    public Faculty(String name, List<Department> departments) {
+    public Faculty(String name/*, List<Department> departments*/) {
         this.name = name;
-        this.departments = departments;
+        //this.departments = departments;
     }
 
     public String getName() {
