@@ -13,7 +13,16 @@
         android:theme="@style/Theme.NavigationDrawer"
         tools:targetApi="31">
         <activity
-            android:name=".PdfActivity"
+            android:name=".DisciplinesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpecialtiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DepartmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pdfs.PdfActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

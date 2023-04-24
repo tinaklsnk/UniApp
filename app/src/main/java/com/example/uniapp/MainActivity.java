@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.uniapp.fragments.ContactsFragment;
+import com.example.uniapp.fragments.FacultyFragment;
 import com.example.uniapp.fragments.HomeFragment;
 import com.example.uniapp.fragments.InfoFragment;
 import com.example.uniapp.fragments.ListFragment;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_list:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ListFragment()).commit();
+                break;
+            case R.id.nav_faculties:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new FacultyFragment()).commit();
                 break;
             case R.id.nav_contacts:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ContactsFragment()).commit();
