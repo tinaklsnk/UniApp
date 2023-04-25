@@ -1,14 +1,14 @@
 package com.example.uniapp.models;
 
-import com.example.uniapp.models.Discipline;
-
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
-public class Specialty {
+public class Specialty implements Serializable {
     private String name;
     private List<Discipline> disciplines;
 
-    public Specialty(String name/*, List<Discipline> disciplines*/) {
+    public Specialty(String name, List<Discipline> disciplines) {
         this.name = name;
         this.disciplines = disciplines;
     }
@@ -17,7 +17,7 @@ public class Specialty {
         return name;
     }
 
-    public List<Discipline> getDisciplines() {
+    public Collection<? extends Discipline> getDisciplines() {
         return disciplines;
     }
 }

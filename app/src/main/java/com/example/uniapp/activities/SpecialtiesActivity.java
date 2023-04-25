@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.uniapp.R;
 import com.example.uniapp.adapters.SpecialtiesAdapter;
 import com.example.uniapp.models.Department;
+import com.example.uniapp.models.Discipline;
 import com.example.uniapp.models.Specialty;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class SpecialtiesActivity extends AppCompatActivity {
     private SpecialtiesAdapter specialtiesAdapter;
     private Department department;
     private TextView textView;
+
+    private List<Discipline> PM, KN, IST, SOM, SOI, FIL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +45,7 @@ public class SpecialtiesActivity extends AppCompatActivity {
         specialtiesRecyclerView.setAdapter(specialtiesAdapter);
     }
 
-    // This is a dummy method that returns a list of specialties for a given department name
     private List<Specialty> getSpecialtiesForDepartment() {
-        /*// You would need to implement this method to retrieve the list of specialties
-        // for a given department name from your data source (database, web service, etc.)
-        // For now, we'll just return a dummy list of specialties
-        List<Discipline> disciplines = new ArrayList<>();
-        disciplines.add(new Discipline("Discipline 1"));
-        disciplines.add(new Discipline("Discipline 2"));
-
-        List<Specialty> specialties = new ArrayList<>();
-        specialties.add(new Specialty("Specialty 1", disciplines));
-        specialties.add(new Specialty("Specialty 2", disciplines));
-        specialties.add(new Specialty("Specialty 3", disciplines));*/
-
         specialtyList = new ArrayList<>();
         if (department != null && department.getSpecialties() != null) {
             specialtyList.addAll(department.getSpecialties());
@@ -77,21 +68,21 @@ public class SpecialtiesActivity extends AppCompatActivity {
             department.setSpecialties(setFIL1());
         }
     }
-    public List<Specialty> setMiF1() {
+    private List<Specialty> setMiF1() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("113 - Прикладна математика"));
+        specialties.add(new Specialty("113 - Прикладна математика", setPM()));
         return specialties;
     }
     public List<Specialty> setMiF2() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("122 - Комп’ютерні науки"));
-        specialties.add(new Specialty("126 – Інформаційні системи та технології"));
+        specialties.add(new Specialty("122 - Комп’ютерні науки", setKN()));
+        specialties.add(new Specialty("126 – Інформаційні системи та технології", null));
         return specialties;
     }
     public List<Specialty> setMiF3() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("014.04 - Середня освіта (Математика)"));
-        specialties.add(new Specialty("014.09 - Середня освіта (Інформатика)"));
+        specialties.add(new Specialty("014.04 - Середня освіта (Математика)", null));
+        specialties.add(new Specialty("014.09 - Середня освіта (Інформатика)", null));
         return specialties;
     }
     public List<Specialty> setMiF4() {
@@ -109,7 +100,7 @@ public class SpecialtiesActivity extends AppCompatActivity {
 
     public List<Specialty> setFIL1() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("035 Філологія"));
+        specialties.add(new Specialty("035 Філологія", null));
         return specialties;
     }
     public List<Specialty> setFIL2() {
@@ -131,5 +122,55 @@ public class SpecialtiesActivity extends AppCompatActivity {
     public List<Specialty> setFIL6() {
         List<Specialty> specialties= new ArrayList<>();
         return specialties;
+    }
+    private List<Discipline> setPM() {
+        List<Discipline> disciplines = new ArrayList<>();
+        disciplines.add(new Discipline("Диференціальні рівняння"));
+        disciplines.add(new Discipline("Рівняння математичної фізики"));
+        disciplines.add(new Discipline("Пакети комп’ютерної математики"));
+        disciplines.add(new Discipline("Варіаційне числення і методи оптимізації"));
+        disciplines.add(new Discipline("Основи математичного моделювання\t"));
+        disciplines.add(new Discipline("Диференціальні рівняння"));
+        disciplines.add(new Discipline("Методи оптимізації"));
+        disciplines.add(new Discipline("Диференціальні рівняння"));
+        disciplines.add(new Discipline("Пакети комп’ютерної математики"));
+        disciplines.add(new Discipline("Числові методи"));
+        disciplines.add(new Discipline("Програмування на C/C++"));
+        disciplines.add(new Discipline("Спеціалізовані мови програмування"));
+        disciplines.add(new Discipline("Видавнича система LaTeX"));
+        disciplines.add(new Discipline("Рівняння з частинними похідними"));
+        disciplines.add(new Discipline("Числові методи"));
+        disciplines.add(new Discipline("Методи оптимізації і дослідженння операцій"));
+        disciplines.add(new Discipline("Теорія систем і математичне моделювання"));
+        disciplines.add(new Discipline("Моделі та методи прийняття рішень"));
+        disciplines.add(new Discipline("Теорія керування"));
+        disciplines.add(new Discipline("Математичні моделі економ., еколог. і соц. процесів"));
+        disciplines.add(new Discipline("Об’єктно-орієнтоване програмування"));
+        return disciplines;
+    }
+    private List<Discipline> setKN() {
+        List<Discipline> disciplines = new ArrayList<>();
+        disciplines.add(new Discipline("Диференціальні рівняння"));
+        disciplines.add(new Discipline("Математичний аналіз"));
+        disciplines.add(new Discipline("Алгебра і геометрія"));
+        disciplines.add(new Discipline("Дискретна математика"));
+        disciplines.add(new Discipline("Теорія ймовірностей та математична статистика"));
+        disciplines.add(new Discipline("Математична логіка та теорія алгоритмів"));
+        disciplines.add(new Discipline("Іноземна мова"));
+        disciplines.add(new Discipline("Web-дизайн"));
+        disciplines.add(new Discipline("Структури даних"));
+        disciplines.add(new Discipline("Архітектура обчислювальних систем"));
+        disciplines.add(new Discipline("Комп’ютерні мережі"));
+        disciplines.add(new Discipline("Вступ у спеціальність"));
+        disciplines.add(new Discipline("Бази даних"));
+        disciplines.add(new Discipline("Операційні системи"));
+        disciplines.add(new Discipline("Програмування С++"));
+        disciplines.add(new Discipline("Програмування C#"));
+        disciplines.add(new Discipline("Програмування Java"));
+        disciplines.add(new Discipline("Паралельні та розподілені обчислення"));
+        disciplines.add(new Discipline("Програмування та підтримка веб-застосувань"));
+        disciplines.add(new Discipline("Теорія програмування"));
+        disciplines.add(new Discipline("Цифрова техніка"));
+        return disciplines;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.uniapp.models;
 
-public class Discipline {
+import java.io.Serializable;
+
+public class Discipline implements Serializable {
     private String name;
 
     public Discipline(String name) {

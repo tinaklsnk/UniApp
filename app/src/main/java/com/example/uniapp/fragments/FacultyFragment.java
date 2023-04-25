@@ -24,8 +24,6 @@ public class FacultyFragment extends Fragment {
     private RecyclerView facultyRecyclerView;
     private FacultiesAdapter facultiesAdapter;
     private Context context;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference facultiesRef = db.collection("faculties");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

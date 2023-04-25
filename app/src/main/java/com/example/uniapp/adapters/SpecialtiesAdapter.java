@@ -14,6 +14,7 @@ import com.example.uniapp.R;
 import com.example.uniapp.activities.DisciplinesActivity;
 import com.example.uniapp.models.Specialty;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class SpecialtiesAdapter extends RecyclerView.Adapter<SpecialtiesAdapter.ViewHolder> {
@@ -42,8 +43,9 @@ public class SpecialtiesAdapter extends RecyclerView.Adapter<SpecialtiesAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DisciplinesActivity.class);
-                intent.putExtra("specialtyName", specialty.getName());
+                intent.putExtra("list", (Serializable) specialty.getDisciplines());
                 context.startActivity(intent);
+
             }
         });
     }

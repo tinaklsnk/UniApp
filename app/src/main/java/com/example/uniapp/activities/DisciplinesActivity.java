@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.uniapp.R;
 import com.example.uniapp.adapters.DisciplineAdapter;
 import com.example.uniapp.models.Discipline;
+import com.example.uniapp.models.Specialty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,18 +21,21 @@ public class DisciplinesActivity extends AppCompatActivity {
     private RecyclerView recyclerViewDisciplines;
     private DisciplineAdapter disciplineAdapter;
     private TextView textView;
+    Specialty specialty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disciplines);
 
-        String specialtyName = getIntent().getStringExtra("specialtyName");
+        //String specialtyName = getIntent().getStringExtra("specialtyName");
+        //specialty = (Specialty) getIntent().getSerializableExtra("specialty");
         //textView = findViewById(R.id.discipline_text_view);
         //textView.setText(specialtyName);
-
+        Intent intent = getIntent();
+        List<Discipline> disciplines = (List<Discipline>) intent.getSerializableExtra("list");
         // get the list of disciplines for the selected specialty
-        List<Discipline> disciplines = getDisciplinesBySpecialty(specialtyName);
+         //disciplines = getDisciplinesBySpecialty();
 
         // set up the recycler view for displaying the list of disciplines
         recyclerViewDisciplines = findViewById(R.id.discipline_recycler_view);
@@ -39,22 +44,10 @@ public class DisciplinesActivity extends AppCompatActivity {
         recyclerViewDisciplines.setAdapter(disciplineAdapter);
     }
 
-    private List<Discipline> getDisciplinesBySpecialty(String specialtyName) {
-        // TODO: implement the logic for getting the list of disciplines for the selected specialty
-        // Here is a sample list for testing purposes
+    private List<Discipline> getDisciplinesBySpecialty() {
         List<Discipline> disciplines = new ArrayList<>();
-        if (specialtyName.equals("Computer Science")) {
-            disciplines.add(new Discipline("Algorithms"));
-            disciplines.add(new Discipline("Data Structures"));
-            disciplines.add(new Discipline("Database Systems"));
-        } else if (specialtyName.equals("Electrical Engineering")) {
-            disciplines.add(new Discipline("Circuits"));
-            disciplines.add(new Discipline("Electromagnetics"));
-            disciplines.add(new Discipline("Power Systems"));
-        } else {
-            disciplines.add(new Discipline("Discipline 1"));
-            disciplines.add(new Discipline("Discipline 2"));
-            disciplines.add(new Discipline("Discipline 3"));
+        if (specialty != null && specialty.getDisciplines() != null) {
+            disciplines.addAll(specialty.getDisciplines());
         }
         return disciplines;
     }
