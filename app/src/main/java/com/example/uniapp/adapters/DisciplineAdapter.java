@@ -24,7 +24,7 @@ public class DisciplineAdapter extends RecyclerView.Adapter<DisciplineAdapter.Di
     @NonNull
     @Override
     public DisciplineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.discipline_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_discipline, parent, false);
         return new DisciplineViewHolder(view);
     }
 

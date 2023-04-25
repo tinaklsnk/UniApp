@@ -8,7 +8,7 @@ public class Specialty {
     private String name;
     private List<Discipline> disciplines;
 
-    public Specialty(String name, List<Discipline> disciplines) {
+    public Specialty(String name/*, List<Discipline> disciplines*/) {
         this.name = name;
         this.disciplines = disciplines;
     }

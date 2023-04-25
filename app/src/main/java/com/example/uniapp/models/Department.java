@@ -18,5 +18,9 @@ public class Department {
     public List<Specialty> getSpecialties() {
         return specialties;
     }
+
+    public void setSpecialties(List<Specialty> specialties) {
+        this.specialties = specialties;
+    }
 }
 

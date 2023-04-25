@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.uniapp.adapters.FacultiesAdapter;
+import com.example.uniapp.models.Department;
 import com.example.uniapp.models.Faculty;
 import com.example.uniapp.R;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,8 @@ public class FacultyFragment extends Fragment {
     private RecyclerView facultyRecyclerView;
     private FacultiesAdapter facultiesAdapter;
     private Context context;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference facultiesRef = db.collection("faculties");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,10 +41,10 @@ public class FacultyFragment extends Fragment {
     }
 
     private List<Faculty> getFaculties() {
-        List<Faculty> listfacultyList = new ArrayList<>();
-        listfacultyList.add(new Faculty("Факультет інформаційних технологій"));
-        listfacultyList.add(new Faculty("Факультет економіки та бізнесу"));
-        listfacultyList.add(new Faculty("Факультет права"));
-        return listfacultyList;
+        List<Faculty> facultyList = new ArrayList<>();
+        facultyList.add(new Faculty("Факультет математики та інформатики"));
+        facultyList.add(new Faculty("Факультет філології"));
+
+        return facultyList;
     }
 }
