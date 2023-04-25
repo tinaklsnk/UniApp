@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.uniapp.R;
 import com.example.uniapp.adapters.DisciplineAdapter;
@@ -17,6 +18,7 @@ public class DisciplinesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewDisciplines;
     private DisciplineAdapter disciplineAdapter;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +26,14 @@ public class DisciplinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_disciplines);
 
         String specialtyName = getIntent().getStringExtra("specialtyName");
-        setTitle(specialtyName);
+        //textView = findViewById(R.id.discipline_text_view);
+        //textView.setText(specialtyName);
 
         // get the list of disciplines for the selected specialty
         List<Discipline> disciplines = getDisciplinesBySpecialty(specialtyName);
 
         // set up the recycler view for displaying the list of disciplines
-        recyclerViewDisciplines = findViewById(R.id.recycler_view_disciplines);
+        recyclerViewDisciplines = findViewById(R.id.discipline_recycler_view);
         recyclerViewDisciplines.setLayoutManager(new LinearLayoutManager(this));
         disciplineAdapter = new DisciplineAdapter(disciplines);
         recyclerViewDisciplines.setAdapter(disciplineAdapter);

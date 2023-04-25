@@ -35,7 +35,6 @@ public class FacultyFragment extends Fragment {
         return view;
     }
 
-    // This method returns a list of faculties.
     private List<Faculty> getFaculties() {
         List<Faculty> listfacultyList = new ArrayList<>();
         listfacultyList.add(new Faculty("Факультет інформаційних технологій"));

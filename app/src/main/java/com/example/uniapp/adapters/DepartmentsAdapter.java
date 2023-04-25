@@ -58,7 +58,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewDepartmentName = itemView.findViewById(R.id.text_view_department_name);
+            textViewDepartmentName = itemView.findViewById(R.id.discipline_text_view);
         }
     }
 }

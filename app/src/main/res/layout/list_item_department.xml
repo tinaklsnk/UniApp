@@ -6,7 +6,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/text_view_department_name"
+        android:id="@+id/discipline_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp" />

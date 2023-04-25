@@ -6,15 +6,17 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/text_view_department_name"
+        android:id="@+id/specialty_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Specialties"
+        android:textAlignment="center"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_specialties"
+        android:id="@+id/specialty_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp" />

@@ -6,7 +6,7 @@ public class Department {
     private String name;
     private List<Specialty> specialties;
 
-    public Department(String name, List<Specialty> specialties) {
+    public Department(String name/*, List<Specialty> specialties*/) {
         this.name = name;
         this.specialties = specialties;
     }

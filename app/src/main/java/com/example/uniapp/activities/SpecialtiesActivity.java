@@ -33,7 +33,7 @@ public class SpecialtiesActivity extends AppCompatActivity {
         specialties = getSpecialtiesForDepartment(departmentName);
 
         // Initialize the RecyclerView
-        recyclerView = findViewById(R.id.recycler_view_specialties);
+        recyclerView = findViewById(R.id.specialty_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the adapter and set it to the RecyclerView
