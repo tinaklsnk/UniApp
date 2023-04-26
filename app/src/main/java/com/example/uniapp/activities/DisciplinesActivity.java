@@ -14,7 +14,6 @@ import com.example.uniapp.R;
 import com.example.uniapp.adapters.DisciplineAdapter;
 import com.example.uniapp.models.Discipline;
 import com.example.uniapp.models.Specialty;
-import com.example.uniapp.pdfs.PdfActivity;
 
 import java.util.List;
 
@@ -22,8 +21,6 @@ public class DisciplinesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewDisciplines;
     private DisciplineAdapter disciplineAdapter;
-    private TextView textView;
-    Specialty specialty;
     String path;
     Button button;
 

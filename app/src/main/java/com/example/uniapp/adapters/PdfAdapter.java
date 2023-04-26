@@ -1,4 +1,4 @@
-package com.example.uniapp.pdfs;
+package com.example.uniapp.adapters;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uniapp.R;
+import com.example.uniapp.fragments.PDFmodel;
 
 import java.util.List;
 

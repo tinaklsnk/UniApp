@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.uniapp.fragments.ContactsFragment;
 import com.example.uniapp.fragments.FacultyFragment;
@@ -49,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_info:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new InfoFragment()).commit();
                 break;
-            case R.id.nav_list:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ListFragment()).commit();
+            case R.id.nav_website:
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pnu.edu.ua/"));
                 startActivity(intent);
                 break;

@@ -1,4 +1,4 @@
-package com.example.uniapp.pdfs;
+package com.example.uniapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

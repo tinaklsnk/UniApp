@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.uniapp.R;
-import com.example.uniapp.adapters.DisciplineAdapter;
-import com.example.uniapp.pdfs.PDFmodel;
-import com.example.uniapp.pdfs.PdfAdapter;
+import com.example.uniapp.fragments.PDFmodel;
+import com.example.uniapp.adapters.PdfAdapter;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -23,7 +21,6 @@ import java.util.List;
 public class SylabusActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<PDFmodel> pdfList = new ArrayList<>();
-
     private String path;
 
     @Override
@@ -55,7 +52,6 @@ public class SylabusActivity extends AppCompatActivity {
                     }
 
                 }).addOnFailureListener(e -> {
-                    // Handle download failure
                     Log.e(TAG,"Error downloading files");
                 });
             }
