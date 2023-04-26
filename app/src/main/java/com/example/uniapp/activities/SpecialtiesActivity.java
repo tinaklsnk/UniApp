@@ -24,9 +24,6 @@ public class SpecialtiesActivity extends AppCompatActivity {
     private Department department;
     private TextView textView;
 
-    private List<Discipline> PM, KN, IST, SOM, SOI, FIL;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,19 +67,19 @@ public class SpecialtiesActivity extends AppCompatActivity {
     }
     private List<Specialty> setMiF1() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("113 - Прикладна математика", setPM()));
+        specialties.add(new Specialty("113 - Прикладна математика", setPM(), "/faculty/MIF/MIF1/PM"));
         return specialties;
     }
     public List<Specialty> setMiF2() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("122 - Комп’ютерні науки", setKN()));
-        specialties.add(new Specialty("126 – Інформаційні системи та технології", null));
+        specialties.add(new Specialty("122 - Комп’ютерні науки", setKN(), "/faculty/MIF/MIF2/KN"));
+        specialties.add(new Specialty("126 – Інформаційні системи та технології", new ArrayList<>(), "/faculty/MIF/MIF2/IST"));
         return specialties;
     }
     public List<Specialty> setMiF3() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("014.04 - Середня освіта (Математика)", null));
-        specialties.add(new Specialty("014.09 - Середня освіта (Інформатика)", null));
+        specialties.add(new Specialty("014.04 - Середня освіта (Математика)", new ArrayList<>(), ""));
+        specialties.add(new Specialty("014.09 - Середня освіта (Інформатика)", new ArrayList<>(), ""));
         return specialties;
     }
     public List<Specialty> setMiF4() {
@@ -100,7 +97,7 @@ public class SpecialtiesActivity extends AppCompatActivity {
 
     public List<Specialty> setFIL1() {
         List<Specialty> specialties= new ArrayList<>();
-        specialties.add(new Specialty("035 Філологія", null));
+        specialties.add(new Specialty("035 Філологія", new ArrayList<>(), ""));
         return specialties;
     }
     public List<Specialty> setFIL2() {

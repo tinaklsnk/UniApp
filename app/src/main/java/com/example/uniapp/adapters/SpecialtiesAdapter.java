@@ -44,6 +44,7 @@ public class SpecialtiesAdapter extends RecyclerView.Adapter<SpecialtiesAdapter.
             public void onClick(View view) {
                 Intent intent = new Intent(context, DisciplinesActivity.class);
                 intent.putExtra("list", (Serializable) specialty.getDisciplines());
+                intent.putExtra("path", specialty.getPath());
                 context.startActivity(intent);
 
             }

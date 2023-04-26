@@ -1,50 +1,48 @@
-package com.example.uniapp.fragments;
+package com.example.uniapp.activities;
 
 import static android.content.ContentValues.TAG;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.uniapp.R;
+import com.example.uniapp.adapters.DisciplineAdapter;
 import com.example.uniapp.pdfs.PDFmodel;
 import com.example.uniapp.pdfs.PdfAdapter;
-import com.example.uniapp.R;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragment extends Fragment {
-
+public class SylabusActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<PDFmodel> pdfList = new ArrayList<>();
 
+    private String path;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sylabus);
 
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
-        recyclerView = view.findViewById(R.id.my_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        PdfAdapter adapter = new PdfAdapter(pdfList, getContext());
+        recyclerView = findViewById(R.id.sylabus_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        PdfAdapter adapter = new PdfAdapter(pdfList, this);
         recyclerView.setAdapter(adapter);
 
+        path = getIntent().getStringExtra("path");
         retrievePDFs();
-        return view;
     }
 
     private void retrievePDFs() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        storage.getReference().child("pdfs").listAll().addOnSuccessListener(listResult -> {
+        storage.getReference().child(path).listAll().addOnSuccessListener(listResult -> {
             for (StorageReference item : listResult.getItems()) {
                 String title = item.getName();
                 item.getDownloadUrl().addOnSuccessListener(uri -> {
@@ -63,7 +61,4 @@ public class ListFragment extends Fragment {
             }
         }).addOnFailureListener(e -> { });
     }
-
-
-
 }

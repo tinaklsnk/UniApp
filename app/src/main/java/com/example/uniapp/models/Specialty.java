@@ -8,9 +8,12 @@ public class Specialty implements Serializable {
     private String name;
     private List<Discipline> disciplines;
 
-    public Specialty(String name, List<Discipline> disciplines) {
+    private String path;
+
+    public Specialty(String name, List<Discipline> disciplines, String path) {
         this.name = name;
         this.disciplines = disciplines;
+        this.path = path;
     }
 
     public String getName() {
@@ -19,5 +22,9 @@ public class Specialty implements Serializable {
 
     public Collection<? extends Discipline> getDisciplines() {
         return disciplines;
+    }
+
+    public String getPath() {
+        return path;
     }
 }

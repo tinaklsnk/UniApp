@@ -6,14 +6,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.uniapp.R;
 import com.example.uniapp.adapters.DisciplineAdapter;
 import com.example.uniapp.models.Discipline;
 import com.example.uniapp.models.Specialty;
+import com.example.uniapp.pdfs.PdfActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinesActivity extends AppCompatActivity {
@@ -22,33 +24,36 @@ public class DisciplinesActivity extends AppCompatActivity {
     private DisciplineAdapter disciplineAdapter;
     private TextView textView;
     Specialty specialty;
+    String path;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disciplines);
 
-        //String specialtyName = getIntent().getStringExtra("specialtyName");
-        //specialty = (Specialty) getIntent().getSerializableExtra("specialty");
-        //textView = findViewById(R.id.discipline_text_view);
-        //textView.setText(specialtyName);
         Intent intent = getIntent();
         List<Discipline> disciplines = (List<Discipline>) intent.getSerializableExtra("list");
-        // get the list of disciplines for the selected specialty
-         //disciplines = getDisciplinesBySpecialty();
-
-        // set up the recycler view for displaying the list of disciplines
+        path = getIntent().getStringExtra("path");
+        button = findViewById(R.id.sylabus_button);
+        if (path.isEmpty() || path==null) {
+            button.setVisibility(View.GONE);
+        }
         recyclerViewDisciplines = findViewById(R.id.discipline_recycler_view);
         recyclerViewDisciplines.setLayoutManager(new LinearLayoutManager(this));
         disciplineAdapter = new DisciplineAdapter(disciplines);
         recyclerViewDisciplines.setAdapter(disciplineAdapter);
-    }
 
-    private List<Discipline> getDisciplinesBySpecialty() {
-        List<Discipline> disciplines = new ArrayList<>();
-        if (specialty != null && specialty.getDisciplines() != null) {
-            disciplines.addAll(specialty.getDisciplines());
-        }
-        return disciplines;
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start the new activity
+                Intent intent = new Intent(DisciplinesActivity.this, SylabusActivity.class);
+                intent.putExtra("path", path);
+                // Start the new activity
+                startActivity(intent);
+            }
+        });
     }
 }
