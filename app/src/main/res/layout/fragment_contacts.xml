@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/contacts"
-        android:textSize="18dp"
-        android:textColor="@color/black"/>
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,7 +17,6 @@ import com.example.uniapp.fragments.ContactsFragment;
 import com.example.uniapp.fragments.FacultyFragment;
 import com.example.uniapp.fragments.HomeFragment;
 import com.example.uniapp.fragments.InfoFragment;
-import com.example.uniapp.fragments.ListFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new InfoFragment()).commit();
                 break;
             case R.id.nav_list:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ListFragment()).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ListFragment()).commit();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pnu.edu.ua/"));
+                startActivity(intent);
                 break;
             case R.id.nav_faculties:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new FacultyFragment()).commit();
