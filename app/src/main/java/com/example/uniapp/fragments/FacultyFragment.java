@@ -42,6 +42,15 @@ public class FacultyFragment extends Fragment {
         List<Faculty> facultyList = new ArrayList<>();
         facultyList.add(new Faculty("Факультет математики та інформатики"));
         facultyList.add(new Faculty("Факультет філології"));
+        facultyList.add(new Faculty("Економічний факультет"));
+        facultyList.add(new Faculty("Педагогічний факультет"));
+        facultyList.add(new Faculty("Факультет іноземних мов"));
+        facultyList.add(new Faculty("Факультет психології"));
+        facultyList.add(new Faculty("Факультет туризму"));
+        facultyList.add(new Faculty("Фізико-технічний факультет"));
+        facultyList.add(new Faculty("Факультет історії, політології і міжнародних відносин"));
+        facultyList.add(new Faculty("Факультет природничих наук"));
+        facultyList.add(new Faculty("Факультет фізичного виховання і спорту"));
 
         return facultyList;
     }

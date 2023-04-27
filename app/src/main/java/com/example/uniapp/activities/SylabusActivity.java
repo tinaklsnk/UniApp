@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.uniapp.R;
-import com.example.uniapp.fragments.PDFmodel;
+import com.example.uniapp.models.PDFmodel;
 import com.example.uniapp.adapters.PdfAdapter;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;

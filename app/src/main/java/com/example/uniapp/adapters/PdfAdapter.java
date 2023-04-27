@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uniapp.R;
-import com.example.uniapp.fragments.PDFmodel;
+import com.example.uniapp.models.PDFmodel;
 
 import java.util.List;
 
@@ -45,7 +45,6 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.PdfViewHolder> {
             try {
                 context.startActivity(intent);
             } catch (ActivityNotFoundException e) {
-                // Handle exception
             }
         });
     }
